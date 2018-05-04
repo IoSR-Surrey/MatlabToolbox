@@ -2,9 +2,9 @@ function x_oct = smoothSpectrum(X,f,Noct)
 %SMOOTHSPECTRUM Apply 1/N-octave smoothing to a frequency spectrum
 % 
 %   X_OCT = IOSR.DSP.SMOOTHSPECTRUM(X,F,NOCT) applies 1/NOCT-octave
-%   smoothing to the frequency spectrum contained in vector X sampled at
-%   frequencies in vector F. X can be a log-, magnitude-, or
-%   power-spectrum. Setting Noct to 0 results in no smoothing.
+%   smoothing to the magnitude-frequency spectrum contained in vector X
+%   sampled at frequencies in vector F. Setting Noct to 0 results in no
+%   smoothing.
 %   
 %   Algorithm
 %   
@@ -34,12 +34,12 @@ function x_oct = smoothSpectrum(X,f,Noct)
 %       Y = Y(1:Nout);
 %       f = ((0:Nout-1)'./NFFT).*Fs;
 %       
-%       % put into dB
-%       Y = 20*log10(abs(Y)./NFFT);
-%       
 %       % smooth
 %       Noct = 3;
-%       Z = iosr.dsp.smoothSpectrum(Y,f,Noct);
+%       Z = iosr.dsp.smoothSpectrum(abs(Y),f,Noct);
+%
+%       % put into dB
+%       Z = 20*log10(Z./NFFT);
 %       
 %       % plot
 %       figure
