@@ -108,7 +108,7 @@ classdef (CaseInsensitiveProperties = true) boxPlot < iosr.statistics.statsPlot
 %                             IOSR.STATISTICS.QUANTILE.
 %       notch               - Logical value indicating whether the box
 %                             should have a notch. The notch is centred on
-%                             the median and extends to ±1.58*IQR/sqrt(N),
+%                             the median and extends to Â±1.58*IQR/sqrt(N),
 %                             where N is the sample size (number of non-NaN
 %                             rows in Y). Generally if the notches of two
 %                             boxes do not overlap, this is evidence of a
@@ -2349,7 +2349,7 @@ classdef (CaseInsensitiveProperties = true) boxPlot < iosr.statistics.statsPlot
             try
                 maxDisplacement = interp1(xd, d, y);
             catch
-                maxDisplacement = zeros(size(y));
+                maxDisplacement = ones(size(y));
             end
             randOffset = rand(size(y));%randperm(numel(y))-1;
             randOffset = (2*randOffset) - 1;
